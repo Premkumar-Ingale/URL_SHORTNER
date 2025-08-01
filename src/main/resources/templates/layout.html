@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<!-- Black Navbar -->
+<nav class="navbar">
+    <div class="container">
+        <div class="brand" th:href="@{/}">URL Shortener</div>
+        <div class="nav-links">
+            <a href="#">My URLs</a>
+            <a href="#">Admin</a>
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
+    </div>
+</nav>
+
+<!--Centered Translucent Content Box -->
+<main class="main-content">
+    <div class="content-box">
+        <div layout:fragment="content"></div>
+    </div>
+</main>
+
+<!--  Footer -->
+<footer class="footer">
+    <p>&copy; 2025 URL Shortener</p>
+</footer>
+
+</body>
+</html>

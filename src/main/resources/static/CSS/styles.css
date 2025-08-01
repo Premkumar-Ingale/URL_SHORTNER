@@ -1,0 +1,78 @@
+/* Reset & base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #1e1e1e, #2e2e2e);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #000;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links a {
+    margin-left: 1rem;
+    text-decoration: none;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+/*  Translucent box */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.content-box {
+    background-color: rgba(255, 255, 255, 0.1); /* Translucent white */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    max-width: 600px;
+    width: 100%;
+    backdrop-filter: blur(10px); /* Adds a glassy effect */
+}
+
+.footer {
+    background-color: #000;
+    color: #aaa;
+    text-align: center;
+    padding: 1rem;
+}
+
+/*
+ If you remove 'backdrop-filter' from .content-box,
+   it won’t look glassy, just semi-transparent. Removing 'sticky' from .navbar will make it scroll away with content.
+*/
