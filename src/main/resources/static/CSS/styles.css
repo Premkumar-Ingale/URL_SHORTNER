@@ -1,27 +1,18 @@
-/* Reset & base */
-* {
-    box-sizing: border-box;
+/* Reset defaults */
+html, body {
     margin: 0;
     padding: 0;
+    background: transparent !important; /* allow starfield to show */
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
-body, html {
-    height: 100%;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #1e1e1e, #2e2e2e);
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Navbar */
+/* Navbar styling */
 .navbar {
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.85); /* semi-transparent black */
     padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 1; /* above background */
 }
 
 .navbar .container {
@@ -30,49 +21,51 @@ body, html {
     align-items: center;
 }
 
-.brand {
+.navbar .brand {
     font-size: 1.5rem;
     font-weight: bold;
+    color: white;
 }
 
 .nav-links a {
+    color: white;
     margin-left: 1rem;
     text-decoration: none;
-    color: #ccc;
-    transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: #fff;
-}
-
-/*  Translucent box */
+/* Main content area */
 .main-content {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    min-height: 80vh;
+    position: relative;
+    z-index: 1; /* keep above background */
 }
 
+/* Glass effect box for text */
 .content-box {
-    background-color: rgba(255, 255, 255, 0.1); /* Translucent white */
+    background-color: rgba(0, 0, 0, 0.6); /* translucent */
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-    max-width: 600px;
-    width: 100%;
-    backdrop-filter: blur(10px); /* Adds a glassy effect */
+    backdrop-filter: blur(4px); /* frosted glass effect */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
+/* Footer */
 .footer {
-    background-color: #000;
-    color: #aaa;
+    background-color: rgba(0, 0, 0, 0.85);
     text-align: center;
     padding: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
-/*
- If you remove 'backdrop-filter' from .content-box,
-   it won’t look glassy, just semi-transparent. Removing 'sticky' from .navbar will make it scroll away with content.
-*/
+/* Links inside content */
+a {
+    color: #00bfff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
