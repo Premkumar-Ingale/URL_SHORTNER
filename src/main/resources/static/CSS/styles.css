@@ -2,35 +2,51 @@
 html, body {
     margin: 0;
     padding: 0;
-    background: transparent !important; /* allow starfield to show */
+    background: transparent ; /* allow starfield to show */
     color: white;
     font-family: Arial, sans-serif;
 }
-
+.page{
+    font-family: monospace;
+    position: relative; /* Ensure it has a positioning context */
+    z-index: 100; /* Set z-index */
+    background-color: rgba(0,0,0,0.5); /* Set a solid background color */
+    color: #fff; /* Set text color for contrast */
+    opacity: 50%; /* Ensure it's fully visible */
+    display: block; /* Ensure it's displayed */
+}
 /* Navbar styling */
 .navbar {
-    background-color: rgba(0, 0, 0, 0.85); /* semi-transparent black */
-    padding: 1rem;
-    position: relative;
-    z-index: 1; /* above background */
+    font-family: monospace;
+    position: relative; /* Ensure it has a positioning context */
+    z-index: 100; /* Set z-index */
+    background-color: rgba(0,0,0,0.5); /* Set a solid background color */
+    color: #fff; /* Set text color for contrast */
+    opacity: 1; /* Ensure it's fully visible */
+    display: block; /* Ensure it's displayed */
 }
 
 .navbar .container {
     display: flex;
+    padding: 17px;
     justify-content: space-between;
     align-items: center;
+    z-index: 1;
 }
 
 .navbar .brand {
     font-size: 1.5rem;
     font-weight: bold;
     color: white;
+    cursor: pointer;
 }
+
 
 .nav-links a {
     color: white;
     margin-left: 1rem;
     text-decoration: none;
+    z-index: 1;
 }
 
 /* Main content area */
@@ -54,7 +70,7 @@ html, body {
 
 /* Footer */
 .footer {
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
     padding: 1rem;
     position: relative;
@@ -64,8 +80,10 @@ html, body {
 /* Links inside content */
 a {
     color: #00bfff;
+    z-index: 1;
 }
 
 a:hover {
     text-decoration: underline;
+    z-index: 1;
 }

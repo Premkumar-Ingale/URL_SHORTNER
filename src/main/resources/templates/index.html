@@ -7,12 +7,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+
+    <style>
+        body {
+            background: transparent !important;  /* remove black background */
+            color: white; /* keep text readable */
+            font-family: monospace;
+        }
+
+        nav, header {
+            background: transparent !important;  /* navbar/header should also be transparent */
+        }
+
+        .container, .content {
+            background: transparent !important;  /* in case you wrapped in a container */
+        }
+
+
+        .page {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 16px;
+            background: transparent;
+        }
+
+        /* Center intro text */
+        .jumbotron p {
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 0 0 20px 0;
+        }
+
+        /* Center heading */
+        h2 {
+            text-align: center;
+            margin: 24px 0 16px 0;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.3); /* transparent with slight tint */
+            backdrop-filter: blur(1px); /* glassy effect */
+            color: white;
+            border-radius: 10px;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+
+        th {
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1); /* subtle transparent header */
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .alert-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-<div layout:fragment="content">
-    <div class="jumbotron bg-light p-5 rounded-3 my-4">
+<div layout:fragment="content" class="page">
+<div class="tablehead">
+
+    <div class="jumbotron">
         <p class="lead">A simple URL shortener service. Create short, easy-to-share links.</p>
     </div>
+
+    <h2>Public Shortened URLs</h2>
+</div>
+    <div th:if="${shortUrls.isEmpty()}" class="alert alert-info">
+        No public URLs have been created yet.
+    </div>
+
+    <div th:unless="${shortUrls.isEmpty()}" class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Short URL</th>
+                <th>Original URL</th>
+                <th>Created By</th>
+                <th>Created</th>
+                <th>Expires</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="url : ${shortUrls}">
+                <td>
+                    <a th:href="@{/s/{key}(key=${url.shortKey})}"
+                       th:text="${baseUrl + '/s/' + url.shortKey}"
+                       target="_blank"></a>
+                </td>
+                <td>
+                    <a th:href="${url.originalUrl}"
+                       th:text="${#strings.abbreviate(url.originalUrl, 50)}"
+                       target="_blank"></a>
+                </td>
+                <td th:text="${url.createdBy != null ? url.createdBy.name : 'Guest'}"></td>
+                <td th:text="${#temporals.format(url.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+                <td th:text="${url.expiresAt != null ? #temporals.format(url.expiresAt, 'yyyy-MM-dd HH:mm') : 'Never'}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>
 </body>
 </html>
